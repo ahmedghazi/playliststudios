@@ -1,0 +1,36 @@
+:root {
+  // scroll-behavior: auto !important;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  // overflow-y: auto;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  transition: background-color 0.4s var(--cubic), color 0.4s var(--cubic);
+}
+main {
+  min-height: var(--app-height, 100vh);
+  position: relative;
+}
+
+.h-app {
+  height: var(--app-height);
+}
+
+@media all and (min-width: $md) {
+}
+
+.sm-only {
+  display: none;
+}
+@media all and (max-width: $md) {
+  .sm-only {
+    display: block;
+  }
+  .hidden-sm {
+    display: none;
+  }
+}

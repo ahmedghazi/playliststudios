@@ -1,0 +1,18 @@
+.page-home {
+  // padding-top: var(--header-height);
+  // background-color: red;
+  .module-text {
+    p {
+      margin-bottom: 0;
+      text-align: justify;
+      hyphens: auto;
+    }
+    p:nth-child(2) {
+      padding-left: 4em;
+      // max-width: 70%;
+    }
+  }
+}
+
+// @media all and (max-width: $sm) {
+// }

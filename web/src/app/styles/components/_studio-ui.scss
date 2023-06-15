@@ -1,0 +1,33 @@
+.studio-ui {
+  // padding: 0.5em var(--space-md);
+  text-transform: uppercase;
+  .icon-play {
+    opacity: 0;
+  }
+  &:hover {
+    .icon-play {
+      opacity: 1;
+    }
+  }
+  .track-infos-header {
+    max-width: calc(100% - 3.1em);
+  }
+  &.is-active {
+    .icon-play {
+      opacity: 1;
+    }
+    .progress {
+      width: 100%;
+    }
+  }
+  .progress {
+    transform-origin: left;
+    mix-blend-mode: difference;
+    width: 0;
+    background-color: white;
+  }
+}
+
+.p-txt {
+  padding: 0.2em 0.4em;
+}

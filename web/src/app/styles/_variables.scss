@@ -1,0 +1,50 @@
+/* BASE VARIABLES
+ *******************/
+:root {
+  --app-height: 100vh;
+  --header-height: 43.5px;
+  --color-bg: #fff;
+  --color-primary: red;
+  --color-hover: #333;
+  --color-muted: #666;
+
+  --font-primary: "Neureal-Mono", helvetica, sans-serif;
+
+  --space-xs: 0.25em;
+  --space-sm: 0.5em;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+
+  --text-xs: 0.625rem;
+  --text-sm: 0.75rem;
+  --text-md: 1rem;
+  --text-lg: 1.5rem;
+
+  /*
+  xs: 8pt 10px
+  md: 12pt 16px
+  lg: 18pt 24px
+  xl: 30pt 40px
+  */
+
+  // --cubic: cubic-bezier(0.53, 0, 0.36, 1);
+  --cubic: cubic-bezier(0.775, 0, 0.17, 1.005);
+
+  // --text-xl: clamp(26px, 5.21vw, 75px);
+
+  --border-width: 1px;
+  --border: var(--border-width) solid;
+  --border-width-lg: 2px;
+  --border-lg: var(--border-width-lg) solid;
+
+  --gutter: 5px;
+
+  --screen-sm: 768px;
+  --screen-md: 1080px;
+  --screen-lg: 1441px;
+}
+
+/* Breakpoints */
+$sm: 768px;
+$md: 1080px;
+$lg: 1441px;
