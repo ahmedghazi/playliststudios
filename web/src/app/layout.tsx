@@ -31,7 +31,7 @@ export default function RootLayout({
           </PageContextProvider>
         </div>
 
-        <Cursor color='red' size={30} />
+        <Cursor color='var(--color-theme)' size={30} />
       </body>
     </html>
   );

@@ -15,12 +15,12 @@ const PlayAll = (props: Props) => {
 
   const _getLabel = (): string => {
     let label = "PLAY ALL";
-    if (!play) {
-      if (currentStudioIndex !== undefined) label = "RESUME";
-    }
-    if (play) {
-      label = "PAUSE";
-    }
+    // if (!play) {
+    //   if (currentStudioIndex !== undefined) label = "RESUME";
+    // }
+    // if (play) {
+    //   label = "PAUSE";
+    // }
     return label;
   };
 

@@ -103,9 +103,9 @@ const StudioUI = ({ index, input }: Props) => {
             <div className='thumbnail aspect-square overflow-hidden '>
               {/* <pre>{JSON.stringify(input.poster, null, 2)}</pre> */}
               <Image
-                src={urlFor(input.poster, 100)}
-                width={100}
-                height={100}
+                src={urlFor(input.poster, 90)}
+                width={90}
+                height={90}
                 alt={input.title || "alt"}
               />
             </div>
