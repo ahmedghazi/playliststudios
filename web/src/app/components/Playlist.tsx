@@ -37,12 +37,13 @@ const Playlist = ({ input }: Props) => {
     const tokenEnded = subscribe("AUDIO_END", (e, d) => {
       console.log(e);
       const next = studio.index + 1 < input.length ? studio.index + 1 : 0;
+      console.log(e, next);
       setCurrentStudioIndex(next);
     });
     return () => {
       unsubscribe(tokenEnded);
     };
-  }, []);
+  }, [studio, setCurrentStudioIndex]);
 
   useEffect(() => {
     // console.log(studio.poster);
@@ -65,7 +66,7 @@ const Playlist = ({ input }: Props) => {
   return (
     <div className='playlist'>
       {/* <pre>{JSON.stringify(studio, null, 2)}</pre> */}
-      <div className='playlist'>
+      <div className='feed'>
         {input?.map((item, i: number) => (
           <StudioUI key={item.title} index={i} input={item} />
         ))}
