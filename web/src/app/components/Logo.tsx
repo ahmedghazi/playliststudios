@@ -28,7 +28,7 @@ const Logo = (props: Props) => {
     fetch(props.url, headers)
       .then((res) => res.text())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSvg(res);
       })
       .catch(console.error.bind(console));

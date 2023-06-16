@@ -38,7 +38,7 @@ const Modal = ({ children, isActive }: Props) => {
     <Container
       className={clsx(
         "modal absolute  bg-bg right-0 top-0 bottom-0 w-1/2 h-full z-10 ",
-        active ? "" : "hidden"
+        isActive ? "" : "hidden"
       )}>
       <div className=''>
         <div className='inner'>{children}</div>

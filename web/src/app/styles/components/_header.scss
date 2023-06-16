@@ -14,15 +14,18 @@ header {
   }
 
   nav li.is-active {
-    color: red;
+    color: black;
   }
 
   nav li,
   button {
     &:hover {
-      color: red;
+      color: black;
     }
   }
   @media all and (max-width: $md) {
+    .inner {
+      padding: var(--space-sm);
+    }
   }
 }

@@ -85,7 +85,7 @@ const StudioUI = ({ index, input }: Props) => {
       // publish("PLAYING")
     }
   };
-  console.log(active, input.title);
+  // console.log(active, input.title);
   return (
     <article
       className={clsx(
@@ -93,7 +93,7 @@ const StudioUI = ({ index, input }: Props) => {
         currentStudioIndex === index ? "is-active" : ""
       )}
       onClick={_onClick}>
-      <div className='grid md:grid-cols-2 gap-lg'>
+      <div className='grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-y-sm md:gap-y-0 gap-x-lg'>
         <div className='infos flex b-t b-b bg-bg'>
           <div className='w-1/2 flex justify-between studio-infos '>
             <div className='flex flex-col justify-between p-txt'>

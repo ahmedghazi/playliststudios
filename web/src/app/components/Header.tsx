@@ -16,8 +16,8 @@ export default async function Header(): Promise<JSX.Element> {
         <Link href={"/"}>{settings.siteName}</Link>
         <div className='flex justify-between'>
           <PlayAll />
-          <nav>
-            <ul className='seasons flex'>
+          <nav className='ellipsis'>
+            <ul className='seasons flex justify-end'>
               {settings.nav?.map((item: Season | any, i: number) => (
                 <li
                   key={i}

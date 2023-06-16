@@ -17,7 +17,7 @@ export default async function Home() {
   const data = await getSeason();
   const playlist: Studio[] | any = data.playlist;
   return (
-    <div className='page-home p-md'>
+    <div className='page-home p-sm md:p-md'>
       {playlist && <Playlist input={playlist} />}
     </div>
   );

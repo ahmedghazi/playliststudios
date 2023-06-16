@@ -29,6 +29,30 @@
     background-color: white;
     transition: transform 0.2s;
   }
+
+  .logo {
+    max-width: 100%;
+  }
+  @media all and (max-width: $md) {
+    & > .grid {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      display: none;
+    }
+    .logo {
+      grid-column: 1;
+      grid-row: 1; /* NEW */
+    }
+    .ellipsis {
+      overflow: unset;
+      white-space: unset;
+      text-overflow: unset;
+    }
+  }
 }
 
 .p-txt {

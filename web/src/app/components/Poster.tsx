@@ -10,7 +10,7 @@ const Poster = () => {
   const { studio, play } = usePageContext();
 
   useEffect(() => {
-    // console.log(studio.poster);
+    console.log(studio.poster, play);
     if (studio && studio.poster && studio.poster) {
       setPoster(studio.poster);
     }
