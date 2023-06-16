@@ -9,18 +9,18 @@ const PlayAll = (props: Props) => {
     usePageContext();
 
   const _onClick = () => {
-    if (currentStudioIndex !== 0) setCurrentStudioIndex(0);
+    if (currentStudioIndex === undefined) setCurrentStudioIndex(0);
     setPlay(!play);
   };
 
   const _getLabel = (): string => {
     let label = "PLAY ALL";
-    // if (!play) {
-    //   if (currentStudioIndex !== undefined) label = "RESUME";
-    // }
-    // if (play) {
-    //   label = "PAUSE";
-    // }
+    if (play === false) {
+      if (currentStudioIndex !== undefined) label = "RESUME";
+    }
+    if (play) {
+      label = "PAUSE";
+    }
     return label;
   };
 
