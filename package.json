@@ -6,8 +6,8 @@
   "author": "ahmedghazi <atmet.ghazi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "s": "cd studio && yarn start",
-    "w": "cd web && npm start",
+    "s": "cd studio && yarn dev",
+    "w": "cd web && yarn dev",
     "d": "git add . && git commit -m 'let s gooo' && git push"
   }
 }

@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import clsx from "clsx";
@@ -12,12 +13,14 @@ const Wrapper = styled.div`
 
   pointer-events: none;
   will-change: transform;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
+  transition: transform 150ms ease-out;
   .dot {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
-
+    border: var(--border);
+    border-color: white;
     background: ${(props) => props.color};
 
     transition: background-color 150ms ease, transform 150ms ease-out;
@@ -27,7 +30,7 @@ const Wrapper = styled.div`
   }
   &.is-anchor-or-button {
     .dot {
-      transform: scale(2.2);
+      transform: scale(1.5);
     }
   }
   &.is-mousedown {
@@ -52,9 +55,9 @@ type Props = {
 const Cursor = ({ color, size }: Props) => {
   // const inertia = 0.3;
   const [css, setCss] = useState({ x: 0, y: 0, opacity: 0, rotate: 0 });
-  const [isAnchorOrButton, setIsAnchorOrButton] = useState(false);
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [isInput, setIsInput] = useState(false);
+  const [isAnchorOrButton, setIsAnchorOrButton] = useState<boolean>(false);
+  const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
+  const [isInput, setIsInput] = useState<boolean>(false);
 
   useEffect(() => {
     document.body.classList.add("has-custom-cursor");
@@ -70,7 +73,7 @@ const Cursor = ({ color, size }: Props) => {
       const __isInput = _getIsInput(e.target);
       setIsInput(__isInput);
 
-      const offset = size / 2;
+      let offset = size / 2;
 
       setCss((css) => ({
         ...css,

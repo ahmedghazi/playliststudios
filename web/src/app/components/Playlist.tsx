@@ -24,7 +24,6 @@ type Props = {
 // };
 
 const Playlist = ({ input }: Props) => {
-  // const [poster, setPoster] = useState<SanityImageAsset>(null);
   const [poster, setPoster] = useState<SanityImageAsset | any>(null);
 
   const { studio, setStudio, currentStudioIndex, setCurrentStudioIndex } =
