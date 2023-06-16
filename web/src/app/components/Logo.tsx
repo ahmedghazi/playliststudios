@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Logo = (props: Props) => {
-  const [svg, setSvg] = useState(null);
+  const [svg, setSvg] = useState<HTMLOrSVGElement | any>(null);
 
   useEffect(() => {
     // console.log(props.svg)

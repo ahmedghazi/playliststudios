@@ -74,7 +74,7 @@ const StudioUI = ({ index, input }: Props) => {
     // });
   }, [currentStudioIndex]);
 
-  const _onClick = (e: MouseEvent) => {
+  const _onClick = (e: React.MouseEvent) => {
     // setActive(!active);
     if (index !== currentStudioIndex) {
       setCurrentStudioIndex(index);
@@ -123,28 +123,8 @@ const StudioUI = ({ index, input }: Props) => {
               transform: `scaleX(${progress})`,
             }}></div>
         </div>
-        <div className='logo'>
-          {logo && (
-            <Logo url={logo.url} />
-            // <Image
-            //   src={logo.url}
-            //   width={logo?.metadata?.dimensions.width}
-            //   height={logo?.metadata?.dimensions.height}
-            //   alt={input.title || "alt"}
-            //   sizes='100vw'
-            //   style={{
-            //     width: "100%",
-            //     height: "auto",
-            //   }}
-            //   blurDataURL={logo?.metadata?.lqip} //automatically provided
-            //   placeholder='blur' // Optional blur-up while loading
-            // />
-          )}
-        </div>
+        <div className='logo'>{logo && <Logo url={logo.url} />}</div>
       </div>
-      {/* {active && input.trackUrl && (
-        <AudioPlayer url={input.trackUrl} progress={progress} />
-      )} */}
     </article>
   );
 };

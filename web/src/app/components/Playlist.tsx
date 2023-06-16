@@ -7,7 +7,7 @@ import { subscribe, unsubscribe } from "pubsub-js";
 import Image from "next/image";
 import AudioPlayer from "./ui/AudioPlayer";
 import { usePageContext } from "../context/PageContext";
-import { urlFor, urlForImage } from "../utils/sanity-utils";
+import { urlFor } from "../utils/sanity-utils";
 import Poster from "./Poster";
 
 type Props = {

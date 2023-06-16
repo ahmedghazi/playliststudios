@@ -1,15 +1,10 @@
 // "use client";
-//@ts-expect-error Async Server Component
 import Link from "next/link";
 import React from "react";
 import { getSettings } from "../utils/sanity-queries";
 import { Season, Settings } from "../types/schema";
 import PlayAll from "./PlayAll";
 import clsx from "clsx";
-
-type Props = {};
-
-// const Page: ({ params }: PageProps) => Promise<JSX.Element> = async({
 
 export default async function Header(): Promise<JSX.Element> {
   const settings: Settings = await getSettings();
