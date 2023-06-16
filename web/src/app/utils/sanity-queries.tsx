@@ -31,29 +31,3 @@ export async function getSeason(): Promise<Season> {
     {}
   );
 }
-
-// export async function getProject(slug: string): Promise<Project> {
-//   return client.fetch(
-//     groq`*[_type == "project" && slug.current == $slug][0]{
-//       ...,
-//       imageCover {
-//         ...,
-//         asset->
-//       }
-//     }`,
-//     { slug: slug }
-//   )
-// }
-
-// export async function getSpace(slug: string): Promise<Space> {
-//   return client.fetch(
-//     groq`*[_type == "space" && slug.current == $slug][0]{
-//       ...,
-//       imageCover {
-//         ...,
-//         asset->
-//       }
-//     }`,
-//     { slug: slug }
-//   )
-// }

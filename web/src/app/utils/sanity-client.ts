@@ -6,8 +6,8 @@ export const sanityConfig = {
   dataset: dataset,
 };
 export const client = createClient({
-  apiVersion,
-  dataset,
   projectId,
+  dataset,
+  apiVersion: "2022-11-15",
   useCdn,
 });
