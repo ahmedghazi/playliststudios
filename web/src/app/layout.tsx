@@ -23,14 +23,14 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <Header />
         <div id='page'>
           <PageContextProvider>
+            <Header />
             <main>{children}</main>
+            <Footer />
           </PageContextProvider>
         </div>
 
-        <Footer />
         {/* <Cursor /> */}
       </body>
     </html>

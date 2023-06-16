@@ -1,0 +1,13 @@
+{
+  "name": "playliststudios",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ahmedghazi/playliststudios.git",
+  "author": "ahmedghazi <atmet.ghazi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "s": "cd studio && yarn start",
+    "w": "cd web && npm start",
+    "d": "git add . && git commit -m 'let s gooo' && git push"
+  }
+}

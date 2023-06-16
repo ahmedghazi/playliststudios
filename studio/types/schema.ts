@@ -190,6 +190,13 @@ export interface Settings extends SanityDocument {
   siteName?: string;
 
   /**
+   * nav — `array`
+   *
+   *
+   */
+  nav?: Array<SanityKeyedReference<Season>>;
+
+  /**
    * Crédits — `blockContent`
    *
    *

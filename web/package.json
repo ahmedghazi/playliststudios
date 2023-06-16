@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.0.2",
+    "@sanity/image-url": "^1.0.2",
     "@types/node": "20.3.1",
     "@types/pubsub-js": "^1.8.3",
     "@types/react": "18.2.12",

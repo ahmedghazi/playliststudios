@@ -4,18 +4,20 @@
   .icon-play {
     opacity: 0;
   }
-  &:hover {
+  &:hover,
+  &.is-active {
     .icon-play {
-      opacity: 1;
+      // opacity: 1;
+      animation: blink-animation 1s infinite;
     }
   }
   .track-infos-header {
     max-width: calc(100% - 3.1em);
   }
   &.is-active {
-    .icon-play {
-      opacity: 1;
-    }
+    // .icon-play {
+    //   opacity: 1;
+    // }
     .progress {
       width: 100%;
     }
@@ -25,9 +27,16 @@
     mix-blend-mode: difference;
     width: 0;
     background-color: white;
+    transition: transform 0.2s;
   }
 }
 
 .p-txt {
   padding: 0.2em 0.4em;
+}
+
+@keyframes blink-animation {
+  to {
+    opacity: 1;
+  }
 }

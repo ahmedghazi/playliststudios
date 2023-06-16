@@ -6,15 +6,8 @@ export async function getSettings(): Promise<Settings> {
   return client.fetch(
     groq`*[_type == "settings"][0]{
       ...,
-      navWorks[]{..., link->},
-      navStudio[]{...,
-        _type == 'linkExternal' => {
-          ...
-        },
-        _type == 'linkInternal' => {
-          link->{slug}
-        }
-      }
+      nav[]->{...},
+
     }`
   );
 }
@@ -38,15 +31,6 @@ export async function getSeason(): Promise<Season> {
     {}
   );
 }
-// export async function getHome(slug: string): Promise<Home> {
-//   return client.fetch(
-//     groq`*[_type == "home" && slug.current == $slug][0]{
-//       ...
-
-//     }`,
-//     { slug: slug }
-//   )
-// }
 
 // export async function getProject(slug: string): Promise<Project> {
 //   return client.fetch(

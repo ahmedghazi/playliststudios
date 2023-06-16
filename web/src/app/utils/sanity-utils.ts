@@ -1,12 +1,24 @@
-// import createImageUrlBuilder from '@sanity/image-url'
+import createImageUrlBuilder from "@sanity/image-url";
 // import { definePreview } from 'next-sanity/preview'
-// // import { sanityConfig } from './config'
+// import { sanityConfig } from './config'
+import { sanityConfig } from "./sanity-client";
+// import { SanityAsset } from "@sanity/image-url/lib/types/types";
 
-// export const imageBuilder = createImageUrlBuilder(sanityConfig)
+const imageBuilder = createImageUrlBuilder(sanityConfig);
 
-// export const urlForImage = (source) =>
-//   imageBuilder.image(source).auto('format').fit('max')
+export function urlFor(source: any, width: number = 2000) {
+  // console.log(source);
+  // if (!source?.asset?._ref) {
+  //   return undefined;
+  // }
 
+  return imageBuilder
+    ?.image(source)
+    .width(width)
+    .auto("format")
+    .fit("crop")
+    .url();
+}
 // export const usePreview = definePreview({
 //   projectId: sanityConfig.projectId,
 //   dataset: sanityConfig.dataset,

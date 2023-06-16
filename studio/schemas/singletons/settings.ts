@@ -43,6 +43,13 @@ export default defineType({
       type: 'string',
       group: 'header',
     }),
+    defineField({
+      name: 'nav',
+      title: 'nav',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'season'}]}],
+      group: 'header',
+    }),
 
     defineField({
       name: 'credits',

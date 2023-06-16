@@ -1,8 +1,13 @@
-import { createClient, groq } from "next-sanity"
+import { createClient } from "next-sanity";
+import { apiVersion, dataset, projectId, useCdn } from "./env";
 
+export const sanityConfig = {
+  projectId: projectId,
+  dataset: dataset,
+};
 export const client = createClient({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: "production",
-  apiVersion: "2023-03-04",
-  useCdn: true,
-})
+  apiVersion,
+  dataset,
+  projectId,
+  useCdn,
+});

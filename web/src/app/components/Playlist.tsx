@@ -7,10 +7,21 @@ import { subscribe, unsubscribe } from "pubsub-js";
 import Image from "next/image";
 import AudioPlayer from "./ui/AudioPlayer";
 import { usePageContext } from "../context/PageContext";
+import { urlFor, urlForImage } from "../utils/sanity-utils";
+import Poster from "./Poster";
 
 type Props = {
   input: Studio[];
 };
+
+// const myCustomImageBuilder = (imageUrlBuilder, options) => {
+// 	return imageUrlBuilder
+// 		.width(options.width || Math.min(options.originalImageDimensions.width, 800))
+// 		.blur(20)
+// 		.flipHorizontal()
+// 		.saturation(-100)
+// 		.fit('clip');
+// };
 
 const Playlist = ({ input }: Props) => {
   // const [poster, setPoster] = useState<SanityImageAsset>(null);
@@ -25,7 +36,7 @@ const Playlist = ({ input }: Props) => {
     // });
 
     const tokenEnded = subscribe("AUDIO_END", (e, d) => {
-      // console.log(e);
+      console.log(e);
       const next = studio.index + 1 < input.length ? studio.index + 1 : 0;
       setCurrentStudioIndex(next);
     });
@@ -35,21 +46,23 @@ const Playlist = ({ input }: Props) => {
   }, []);
 
   useEffect(() => {
-    if (studio && studio.poster && studio.poster.asset) {
-      setPoster(studio.poster?.asset);
+    // console.log(studio.poster);
+    if (studio && studio.poster && studio.poster) {
+      setPoster(studio.poster);
     }
   }, [studio]);
 
   useEffect(() => {
-    if (!currentStudioIndex) return;
+    if (currentStudioIndex === undefined) return;
+    console.log("setting current studio", currentStudioIndex);
     setStudio({
       index: currentStudioIndex,
       title: input[currentStudioIndex].title,
-      posterAsset: input[currentStudioIndex].poster?.asset,
+      poster: input[currentStudioIndex].poster?.asset,
       trackUrl: input[currentStudioIndex].trackUrl,
     });
   }, [currentStudioIndex]);
-  // console.log({ currentStudioIndex });
+
   return (
     <div className='playlist'>
       {/* <pre>{JSON.stringify(studio, null, 2)}</pre> */}
@@ -58,26 +71,8 @@ const Playlist = ({ input }: Props) => {
           <StudioUI key={item.title} index={i} input={item} />
         ))}
       </div>
-      {poster && (
-        <Modal>
-          {poster && poster?.url && (
-            <Image
-              src={poster.url}
-              width={poster?.metadata?.dimensions.width}
-              height={poster?.metadata?.dimensions.height}
-              alt={studio.title || "alt"}
-              sizes='100vw'
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              blurDataURL={poster?.metadata?.lqip} //automatically provided
-              placeholder='blur' // Optional blur-up while loading
-            />
-          )}
-        </Modal>
-      )}
-      {studio.trackUrl && <AudioPlayer url={studio.trackUrl} />}
+      <Poster />
+      {studio && studio.trackUrl && <AudioPlayer url={studio.trackUrl} />}
     </div>
   );
 };

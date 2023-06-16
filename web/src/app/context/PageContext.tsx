@@ -7,16 +7,10 @@ import React, {
   useState,
 } from "react";
 import { usePathname } from "next/navigation";
-import { SanityImageAsset, SanityReference, Studio } from "../types/schema";
+import { Studio } from "../types/schema";
 
 interface StudioProps extends Studio {
   index: number;
-  // logoAsset?: {
-  //   asset: SanityReference<SanityImageAsset>;
-  // };
-  // posterAsset?: {
-  //   asset: SanityReference<SanityImageAsset>;
-  // };
 }
 
 type ContextProps = {
@@ -25,6 +19,8 @@ type ContextProps = {
   setStudio: Function;
   currentStudioIndex: number | undefined;
   setCurrentStudioIndex: Function;
+  play: boolean;
+  setPlay: Function;
 };
 
 const PageContext = createContext<ContextProps>({} as ContextProps);
@@ -35,15 +31,11 @@ interface PageContextProps {
   // pageContext: object;
 }
 
-export const PageContextProvider = (props: PageContextProps) => {
-  // const [poster, setPoster] = useState<string>("");
-  // const [track, setTrack] = useState<string>("");
+export const PageContextProvider = ({ children }: PageContextProps) => {
   const [currentStudioIndex, setCurrentStudioIndex] = useState<number>();
   const [studio, setStudio] = useState<StudioProps>({} as StudioProps);
-
-  const { children } = props;
+  const [play, setPlay] = useState<boolean>(false);
   const pathname = usePathname();
-  // console.log(pathname);
   const settings = {
     pathname,
   };
@@ -82,13 +74,12 @@ export const PageContextProvider = (props: PageContextProps) => {
         setStudio,
         currentStudioIndex,
         setCurrentStudioIndex,
+        play,
+        setPlay,
       }}>
       {children}
     </PageContext.Provider>
   );
 };
-
-// export default PageContext;
-// export { PageContext, PageContextProvider };
 
 export const usePageContext = () => useContext(PageContext);

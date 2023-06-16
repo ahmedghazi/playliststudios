@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { SanityImageAsset, Studio } from "../types/schema";
 import Image from "next/image";
-import { subscribe, unsubscribe } from "pubsub-js";
+import { publish, subscribe, unsubscribe } from "pubsub-js";
 import { usePageContext } from "../context/PageContext";
 import clsx from "clsx";
+import { urlFor } from "../utils/sanity-utils";
+import AudioPlayer from "./ui/AudioPlayer";
+import Logo from "./Logo";
 // import { log } from "console";
 
 type Props = {
@@ -18,16 +21,20 @@ const StudioUI = ({ index, input }: Props) => {
 
   const [progress, setProgress] = useState<number>(0);
   const [active, setActive] = useState<boolean>(false);
-  const { studio, setStudio, currentStudioIndex, setCurrentStudioIndex } =
-    usePageContext();
+  const {
+    studio,
+    setStudio,
+    currentStudioIndex,
+    setCurrentStudioIndex,
+    play,
+    setPlay,
+  } = usePageContext();
 
   useEffect(() => {
-    const tokenActive = subscribe("STUDIO_ACTIVE", (e, d) => {
-      if (d === index) {
-        setActive(true);
-      }
-    });
-    const tokenNext = subscribe("STUDIO_NEXT", (e, d) => {});
+    // const tokenActive = subscribe("STUDIO_ACTIVE", (e, d) => {
+    //   console.log(e);
+    //   setActive(d === index);
+    // });
 
     const tokenProgress = subscribe("AUDIO_PROGRESS", (e, d) => {
       if (d.trackUrl === input.trackUrl) {
@@ -38,31 +45,47 @@ const StudioUI = ({ index, input }: Props) => {
     });
 
     return () => {
-      unsubscribe(tokenActive);
-      unsubscribe(tokenNext);
+      // unsubscribe(tokenActive);
       unsubscribe(tokenProgress);
     };
   }, []);
 
   useEffect(() => {
-    setCurrentStudioIndex(index);
+    // console.log("here");
+    // if (active) {
+    //   setCurrentStudioIndex(index);
+    // } else {
+    //   setCurrentStudioIndex(undefined);
+    // }
   }, [active]);
 
   useEffect(() => {
     // console.log(studio);
-    if (currentStudioIndex !== index) return;
+    console.log(currentStudioIndex);
+    setActive(currentStudioIndex === index);
+    // if (currentStudioIndex !== index) {
+    //   setActive(false);
+    // }
 
-    setStudio({
-      title: input.title,
-      poster: poster,
-      trackUrl: input.trackUrl,
-    });
-  }, [currentStudioIndex, active]);
+    // setStudio({
+    //   title: input.title,
+    //   poster: poster,
+    //   trackUrl: input.trackUrl,
+    // });
+  }, [currentStudioIndex]);
 
-  const _onClick = () => {
-    setActive(!active);
+  const _onClick = (e: MouseEvent) => {
+    // setActive(!active);
+    if (index !== currentStudioIndex) {
+      setCurrentStudioIndex(index);
+      setPlay(true);
+    } else {
+      // setActive()
+      setPlay(!play);
+      // publish("PLAYING")
+    }
   };
-
+  console.log(active, input.title);
   return (
     <article
       className={clsx(
@@ -77,7 +100,15 @@ const StudioUI = ({ index, input }: Props) => {
               <h2>{input.title}</h2>
               <div className='icon-play'>play</div>
             </div>
-            <div className='thumbnail aspect-square bg-red'></div>
+            <div className='thumbnail aspect-square overflow-hidden '>
+              {/* <pre>{JSON.stringify(input.poster, null, 2)}</pre> */}
+              <Image
+                src={urlFor(input.poster, 100)}
+                width={100}
+                height={100}
+                alt={input.title || "alt"}
+              />
+            </div>
           </div>
           <div className='w-1/2 track-infos flex justify-between gap-md p-txt'>
             <div className='track-infos-header max-w-full '>
@@ -93,23 +124,27 @@ const StudioUI = ({ index, input }: Props) => {
             }}></div>
         </div>
         <div className='logo'>
-          {input.logo && (
-            <Image
-              src={logo.url}
-              width={logo?.metadata?.dimensions.width}
-              height={logo?.metadata?.dimensions.height}
-              alt={input.title || "alt"}
-              sizes='100vw'
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              blurDataURL={logo?.metadata?.lqip} //automatically provided
-              placeholder='blur' // Optional blur-up while loading
-            />
+          {logo && (
+            <Logo url={logo.url} />
+            // <Image
+            //   src={logo.url}
+            //   width={logo?.metadata?.dimensions.width}
+            //   height={logo?.metadata?.dimensions.height}
+            //   alt={input.title || "alt"}
+            //   sizes='100vw'
+            //   style={{
+            //     width: "100%",
+            //     height: "auto",
+            //   }}
+            //   blurDataURL={logo?.metadata?.lqip} //automatically provided
+            //   placeholder='blur' // Optional blur-up while loading
+            // />
           )}
         </div>
       </div>
+      {/* {active && input.trackUrl && (
+        <AudioPlayer url={input.trackUrl} progress={progress} />
+      )} */}
     </article>
   );
 };

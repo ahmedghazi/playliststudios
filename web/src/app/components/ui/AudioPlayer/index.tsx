@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { publish } from "pubsub-js";
 import ReactPlayer from "react-player";
 import { usePageContext } from "@/app/context/PageContext";
@@ -9,6 +9,13 @@ type Props = {
 };
 const AudioPlayer = ({ url }: Props) => {
   const [duration, setDuration] = useState<number>(0);
+  const [playing, setPlaying] = useState<boolean>(false);
+  const { play } = usePageContext();
+
+  // useEffect(() => {
+  //   setPlaying(play);
+  // }, [play]);
+
   const _secondsToHms = (t: number) => {
     const d = Number(t);
     var h = Math.floor(d / 3600);
@@ -23,19 +30,19 @@ const AudioPlayer = ({ url }: Props) => {
     );
   };
 
-  const _onDuration = (duration: number) => {
+  const _onDuration = (d: number) => {
     // console.log(duration);
-    setDuration(duration);
+    setDuration(d);
   };
   const _onReady = (p: any) => {
     // console.log(event);
   };
 
-  const _onProgress = (progress: object) => {
+  const _onProgress = (p: object) => {
     // console.log(progress);
     publish("AUDIO_PROGRESS", {
       trackUrl: url,
-      progress: progress,
+      progress: p,
       duration: duration,
     });
   };
@@ -57,10 +64,10 @@ const AudioPlayer = ({ url }: Props) => {
     },
   };
   return (
-    <div className='player-audio fixed hidden-'>
+    <div className='player-audio fixed hidden'>
       <ReactPlayer
         url={url as string}
-        playing={true}
+        playing={play}
         muted={false}
         playsinline
         config={config}

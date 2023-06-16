@@ -25,9 +25,10 @@ const Container = styled.div`
 
 type Props = {
   children: ReactNode;
+  isActive: boolean;
 };
-const Modal = ({ children }: Props) => {
-  const [active, setActive] = useState<boolean>(true);
+const Modal = ({ children, isActive }: Props) => {
+  const [active, setActive] = useState<boolean>(isActive);
 
   useEffect(() => {
     publish("IS_MODAL", active);
