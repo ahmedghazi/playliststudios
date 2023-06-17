@@ -29,7 +29,7 @@ const Modal = ({ children, isActive }: ModalProps) => {
     <Container
       isActive={isActive}
       className={clsx(
-        "modal bg-bg  z-10 "
+        "modal bg-bg  z-10 md:pl-lg"
         // isActive ? "" : "hidden"
       )}>
       <div className='sticky top-0'>
