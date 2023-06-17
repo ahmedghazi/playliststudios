@@ -4,7 +4,7 @@ import { usePageContext } from "../context/PageContext";
 
 type Props = {};
 
-const PlayAll = (props: Props) => {
+const ButtonPlay = (props: Props) => {
   const { currentStudioIndex, setCurrentStudioIndex, play, setPlay } =
     usePageContext();
 
@@ -32,4 +32,4 @@ const PlayAll = (props: Props) => {
   );
 };
 
-export default PlayAll;
+export default ButtonPlay;

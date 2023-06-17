@@ -89,11 +89,11 @@ const StudioUI = ({ index, input }: Props) => {
   return (
     <article
       className={clsx(
-        "studio-ui mb-md text-lg cursor-pointer",
+        "studio-ui mb-md text-lg cursor-pointer relative",
         currentStudioIndex === index ? "is-active" : ""
       )}
       onClick={_onClick}>
-      <div className='grid- md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-y-sm md:gap-y-0 gap-x-lg pointer-events-none'>
+      <div className='grid md:block grid-rows-2'>
         <div className='infos flex b-t b-b bg-bg'>
           <div className='w-1/2 flex justify-between studio-infos '>
             <div className='flex flex-col justify-between p-txt'>
@@ -123,8 +123,7 @@ const StudioUI = ({ index, input }: Props) => {
               transform: `scaleX(${progress})`,
             }}></div>
         </div>
-        <div className='logo absolute left-full w-full top-0 pl-lg'>
-          {/* {logo && <Logo url={logo.url} />} */}
+        <div className='logo md:absolute md:left-full w-full top-0 md:pl-lg mb-md'>
           <Image
             src={logo.url}
             width={logo?.metadata?.dimensions.width}

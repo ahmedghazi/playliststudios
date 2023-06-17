@@ -4,15 +4,21 @@ import styled from "styled-components";
 
 import { publish } from "pubsub-js";
 
-const Container = styled.div`
+interface ContainerProps {
+  isActive: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
   /* height: calc(100vh - (var(--header-height) + var(--space-md) * 2)); */
+  transition: transform 0.2s var(--cubic);
+  transform: ${(p) => (p.isActive ? "translateY(0)" : "translateY(100%)")};
 `;
 
-type Props = {
+type ModalProps = {
   children: ReactNode;
   isActive: boolean;
 };
-const Modal = ({ children, isActive }: Props) => {
+const Modal = ({ children, isActive }: ModalProps) => {
   const [active, setActive] = useState<boolean>(isActive);
 
   useEffect(() => {
@@ -21,9 +27,10 @@ const Modal = ({ children, isActive }: Props) => {
 
   return (
     <Container
+      isActive={isActive}
       className={clsx(
-        "modal sticky-  bg-bg right-0 top-header-height- bottom-0- w-1/2- h-full- z-10 py-md-",
-        isActive ? "" : "hidden"
+        "modal bg-bg  z-10 "
+        // isActive ? "" : "hidden"
       )}>
       <div className='sticky top-0'>
         <div className='inner'>{children}</div>

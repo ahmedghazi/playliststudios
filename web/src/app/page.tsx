@@ -3,7 +3,6 @@ import website from "./config/website";
 import { getSeason } from "./utils/sanity-queries";
 import Playlist from "./components/Playlist";
 import { Studio } from "./types/schema";
-import { useEffect } from "react";
 
 export const revalidate = 3600; // revalidate every hour
 export const runtime = "edge";

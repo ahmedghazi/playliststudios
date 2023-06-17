@@ -1,0 +1,11 @@
+.playlist {
+  @media all and (max-width: $md) {
+    display: flex;
+    width: 180vw;
+
+    .feed,
+    .modal {
+      width: 50%;
+    }
+  }
+}
