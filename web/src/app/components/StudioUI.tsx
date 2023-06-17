@@ -85,7 +85,7 @@ const StudioUI = ({ index, input }: Props) => {
       // publish("PLAYING")
     }
   };
-  // console.log(active, input.title);
+
   return (
     <article
       className={clsx(
@@ -93,7 +93,7 @@ const StudioUI = ({ index, input }: Props) => {
         currentStudioIndex === index ? "is-active" : ""
       )}
       onClick={_onClick}>
-      <div className='grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-y-sm md:gap-y-0 gap-x-lg pointer-events-none'>
+      <div className='grid- md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-y-sm md:gap-y-0 gap-x-lg pointer-events-none'>
         <div className='infos flex b-t b-b bg-bg'>
           <div className='w-1/2 flex justify-between studio-infos '>
             <div className='flex flex-col justify-between p-txt'>
@@ -123,7 +123,22 @@ const StudioUI = ({ index, input }: Props) => {
               transform: `scaleX(${progress})`,
             }}></div>
         </div>
-        <div className='logo'>{logo && <Logo url={logo.url} />}</div>
+        <div className='logo absolute left-full w-full top-0 pl-lg'>
+          {/* {logo && <Logo url={logo.url} />} */}
+          <Image
+            src={logo.url}
+            width={logo?.metadata?.dimensions.width}
+            height={logo?.metadata?.dimensions.height}
+            alt={input.title || "alt"}
+            sizes='100vw'
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+            blurDataURL={logo?.metadata?.lqip} //automatically provided
+            placeholder='blur' // Optional blur-up while loading
+          />
+        </div>
       </div>
     </article>
   );

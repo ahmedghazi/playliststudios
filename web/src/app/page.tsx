@@ -6,6 +6,7 @@ import { Studio } from "./types/schema";
 import { useEffect } from "react";
 
 export const revalidate = 3600; // revalidate every hour
+export const runtime = "edge";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

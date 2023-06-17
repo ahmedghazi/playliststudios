@@ -5,22 +5,7 @@ import styled from "styled-components";
 import { publish } from "pubsub-js";
 
 const Container = styled.div`
-  height: calc(100vh - (var(--header-height) + var(--space-md) * 2));
-  /* overflow-y: auto; */
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  /* figure {
-    height: 100vh;
-  }
-  .gatsby-image-wrapper,
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  .loader {
-    animation: blink-animation 1s steps(5, start) infinite;
-  } */
+  /* height: calc(100vh - (var(--header-height) + var(--space-md) * 2)); */
 `;
 
 type Props = {
@@ -37,10 +22,10 @@ const Modal = ({ children, isActive }: Props) => {
   return (
     <Container
       className={clsx(
-        "modal absolute  bg-bg right-0 top-0 bottom-0 w-1/2 h-full z-10 ",
+        "modal sticky-  bg-bg right-0 top-header-height- bottom-0- w-1/2- h-full- z-10 py-md-",
         isActive ? "" : "hidden"
       )}>
-      <div className=''>
+      <div className='sticky top-0'>
         <div className='inner'>{children}</div>
       </div>
     </Container>

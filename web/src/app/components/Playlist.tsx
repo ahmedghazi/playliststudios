@@ -64,8 +64,7 @@ const Playlist = ({ input }: Props) => {
   }, [currentStudioIndex]);
 
   return (
-    <div className='playlist'>
-      {/* <pre>{JSON.stringify(studio, null, 2)}</pre> */}
+    <div className='playlist md:w-1/2- grid grid-cols-2 gap-x-lg'>
       <div className='feed'>
         {input?.map((item, i: number) => (
           <StudioUI key={item.title} index={i} input={item} />

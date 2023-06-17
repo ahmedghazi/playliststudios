@@ -26,6 +26,16 @@ const components: PortableTextComponents = {
         </a>
       );
     },
+    linkExternal: ({ children, value }) => {
+      const rel = !value.href.startsWith("/")
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <a href={value.href} rel={rel} target='_blank'>
+          {children}
+        </a>
+      );
+    },
   },
 };
 

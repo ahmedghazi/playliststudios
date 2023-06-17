@@ -66,6 +66,11 @@ a[aria-current="page"] {
 }
 
 /* Text elements */
+.text {
+  a {
+    text-decoration: underline;
+  }
+}
 p,
 .text p {
   // margin-bottom: 0;
