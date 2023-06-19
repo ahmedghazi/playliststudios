@@ -60,6 +60,7 @@ const Playlist = ({ input }: Props) => {
       title: input[currentStudioIndex].title,
       poster: input[currentStudioIndex].poster?.asset,
       trackUrl: input[currentStudioIndex].trackUrl,
+      logo: input[currentStudioIndex].logo,
     });
   }, [currentStudioIndex]);
 

@@ -17,13 +17,13 @@ type Props = {
 const StudioUI = ({ index, input }: Props) => {
   // console.log(progress);
   const logo: SanityImageAsset | any = input.logo?.asset;
-  const poster: SanityImageAsset | any = input.poster?.asset;
+  // const poster: SanityImageAsset | any = input.poster?.asset;
 
   const [progress, setProgress] = useState<number>(0);
   const [active, setActive] = useState<boolean>(false);
   const {
-    studio,
-    setStudio,
+    // studio,
+    // setStudio,
     currentStudioIndex,
     setCurrentStudioIndex,
     play,

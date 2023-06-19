@@ -5,13 +5,13 @@ import styled from "styled-components";
 import { publish } from "pubsub-js";
 
 interface ContainerProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 const Container = styled.div<ContainerProps>`
   /* height: calc(100vh - (var(--header-height) + var(--space-md) * 2)); */
   transition: transform 0.2s var(--cubic);
-  transform: ${(p) => (p.isActive ? "translateY(0)" : "translateY(100%)")};
+  transform: ${(p) => (p.$isActive ? "translateY(0)" : "translateY(100%)")};
 `;
 
 type ModalProps = {
@@ -27,7 +27,7 @@ const Modal = ({ children, isActive }: ModalProps) => {
 
   return (
     <Container
-      isActive={isActive}
+      $isActive={isActive}
       className={clsx(
         "modal bg-bg  z-10 md:pl-lg"
         // isActive ? "" : "hidden"
