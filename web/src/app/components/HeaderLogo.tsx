@@ -12,16 +12,23 @@ const HeaderLogo = (props: Props) => {
   // const [current, setCurrent] = useState();
   const { studio, play } = usePageContext();
   const [logo, setLogo] = useState<SanityImageAsset | any>(null);
+  const [title, setTitle] = useState<string | any>(null);
 
   useEffect(() => {
-    if (studio.logo) setLogo(studio.logo);
+    if (studio.title) setTitle(studio.title);
   }, [studio]);
   // console.log(props);
   return (
     <div className='header-logo'>
       {/* <pre>{JSON.stringify(studio.logo, null, 2)}</pre> */}
-      {!logo && <span>{props.siteName}</span>}
-      {logo && (
+      {title && <span className='hidden-sm pr-sm'>{title} for</span>}
+      <span>{props.siteName}</span>
+      {/* {title && (
+        <span>
+          {title} for {props.siteName}
+        </span>
+      )} */}
+      {/* {logo && (
         <Image
           src={logo.asset.url}
           width={logo.asset?.metadata?.dimensions.aspectRatio * 19}
@@ -35,7 +42,7 @@ const HeaderLogo = (props: Props) => {
           // blurDataURL={studio.logo.asset?.metadata?.lqip} //automatically provided
           // placeholder='blur' // Optional blur-up while loading
         />
-      )}
+      )} */}
     </div>
   );
 };
