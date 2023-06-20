@@ -17,7 +17,6 @@ export default async function Header(): Promise<JSX.Element> {
       <div className='inner flex justify-between md:grid grid-cols-2 md:grid-cols-2 gap-lg- items-center  '>
         <div className=''>
           <Link href={"/"}>
-            {/* {settings.siteName} */}
             <HeaderLogo siteName={settings.siteName || "PlaylistStudios"} />
           </Link>
         </div>
@@ -51,5 +50,3 @@ export default async function Header(): Promise<JSX.Element> {
     </header>
   );
 }
-
-// export default async Header;
