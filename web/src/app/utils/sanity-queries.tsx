@@ -12,7 +12,7 @@ export async function getSettings(): Promise<Settings> {
   );
 }
 
-export async function getSeason(): Promise<Season> {
+export async function getHomeSeason(): Promise<Season> {
   return client.fetch(
     groq`*[_type == "season" && homePage == true][0]{
       ...,
@@ -29,5 +29,25 @@ export async function getSeason(): Promise<Season> {
       }
     }`,
     {}
+  );
+}
+
+export async function getSeason(slug: string): Promise<Season> {
+  return client.fetch(
+    groq`*[_type == "season" && slug == $slug][0]{
+      ...,
+      playlist[]->{
+        ...,
+        logo {
+          ...,
+          asset->
+        },
+        poster {
+          ...,
+          asset->
+        }
+      }
+    }`,
+    { slug: slug }
   );
 }

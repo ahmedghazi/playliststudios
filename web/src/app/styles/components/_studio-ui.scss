@@ -16,8 +16,15 @@
     }
   }
   .thumbnail {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    // height: 90px;
+    aspect-ratio: 1 / 1.41;
+    height: auto;
+    img {
+      // height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
   }
   .track-infos-header {
     max-width: calc(100% - 3.1em);
@@ -30,7 +37,7 @@
   .progress {
     background-color: var(--color-theme);
     transform-origin: left;
-    mix-blend-mode: difference;
+    mix-blend-mode: screen;
     width: 0;
     // background-color: white;
     transition: transform 0.2s;

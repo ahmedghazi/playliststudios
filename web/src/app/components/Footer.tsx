@@ -12,12 +12,12 @@ export default async function Footer(): Promise<JSX.Element> {
 
   return (
     <footer className='p-md'>
-      <div className='grid md:grid-cols-4 gap-md'>
-        <div className='col-span-2'>
+      <div className='grid md:grid-cols-2 gap-md- gap-0'>
+        <div className='col-span-2 md:col-span-1'>
           © {website.title} {new Date().getFullYear()}
         </div>
 
-        <div className='text '>
+        <div className='text md:pl-lg'>
           <PortableText
             value={settings.credits as BlockContent}
             components={components}

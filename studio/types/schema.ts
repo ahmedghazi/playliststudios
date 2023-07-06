@@ -103,6 +103,13 @@ export interface Studio extends SanityDocument {
   title?: string;
 
   /**
+   * Studio Url — `string`
+   *
+   *
+   */
+  studioUrl?: string;
+
+  /**
    * Logo — `image`
    *
    *

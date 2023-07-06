@@ -24,7 +24,12 @@ export default defineType({
       title: 'Title',
       group: 'editorial',
     }),
-
+    defineField({
+      name: 'studioUrl',
+      type: 'string',
+      title: 'Studio Url',
+      group: 'editorial',
+    }),
     defineField({
       name: 'logo',
       type: 'image',

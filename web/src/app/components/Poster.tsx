@@ -15,23 +15,28 @@ const Poster = () => {
       setPoster(studio.poster);
     }
   }, [studio]);
-
+  console.log(studio);
   return (
     <Modal isActive={play}>
       {poster && poster?.url && (
-        <Image
-          src={urlFor(poster.url, 1500)}
-          width={poster?.metadata?.dimensions.width}
-          height={poster?.metadata?.dimensions.height}
-          alt={studio.title || "alt"}
-          sizes='100vw'
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-          blurDataURL={poster?.metadata?.lqip} //automatically provided
-          placeholder='blur' // Optional blur-up while loading
-        />
+        <a
+          href={studio.studioUrl || "#"}
+          rel='noopener noreferrer'
+          target='_blank'>
+          <Image
+            src={urlFor(poster.url, 1500)}
+            width={poster?.metadata?.dimensions.width}
+            height={poster?.metadata?.dimensions.height}
+            alt={studio.title || "alt"}
+            sizes='100vw'
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+            blurDataURL={poster?.metadata?.lqip} //automatically provided
+            placeholder='blur' // Optional blur-up while loading
+          />
+        </a>
       )}
     </Modal>
   );

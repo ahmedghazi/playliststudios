@@ -12,6 +12,7 @@ const Container = styled.div<ContainerProps>`
   /* height: calc(100vh - (var(--header-height) + var(--space-md) * 2)); */
   transition: transform 0.2s var(--cubic);
   transform: ${(p) => (p.$isActive ? "translateY(0)" : "translateY(100%)")};
+  opacity: ${(p) => (p.$isActive ? "1" : "0")};
 `;
 
 type ModalProps = {

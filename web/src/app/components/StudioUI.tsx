@@ -21,21 +21,10 @@ const StudioUI = ({ index, input }: Props) => {
 
   const [progress, setProgress] = useState<number>(0);
   const [active, setActive] = useState<boolean>(false);
-  const {
-    // studio,
-    // setStudio,
-    currentStudioIndex,
-    setCurrentStudioIndex,
-    play,
-    setPlay,
-  } = usePageContext();
+  const { currentStudioIndex, setCurrentStudioIndex, play, setPlay } =
+    usePageContext();
 
   useEffect(() => {
-    // const tokenActive = subscribe("STUDIO_ACTIVE", (e, d) => {
-    //   console.log(e);
-    //   setActive(d === index);
-    // });
-
     const tokenProgress = subscribe("AUDIO_PROGRESS", (e, d) => {
       if (d.trackUrl === input.trackUrl) {
         // const perc = d.progress.playedSeconds / d.duration;
@@ -51,27 +40,9 @@ const StudioUI = ({ index, input }: Props) => {
   }, []);
 
   useEffect(() => {
-    // console.log("here");
-    // if (active) {
-    //   setCurrentStudioIndex(index);
-    // } else {
-    //   setCurrentStudioIndex(undefined);
-    // }
-  }, [active]);
-
-  useEffect(() => {
     // console.log(studio);
-    console.log(currentStudioIndex);
+    // console.log(currentStudioIndex);
     setActive(currentStudioIndex === index);
-    // if (currentStudioIndex !== index) {
-    //   setActive(false);
-    // }
-
-    // setStudio({
-    //   title: input.title,
-    //   poster: poster,
-    //   trackUrl: input.trackUrl,
-    // });
   }, [currentStudioIndex]);
 
   const _onClick = (e: React.MouseEvent) => {
@@ -103,7 +74,7 @@ const StudioUI = ({ index, input }: Props) => {
             <div className='thumbnail aspect-square overflow-hidden '>
               {/* <pre>{JSON.stringify(input.poster, null, 2)}</pre> */}
               <Image
-                src={urlFor(input.poster, 90)}
+                src={urlFor(input.poster, 180)}
                 width={90}
                 height={90}
                 alt={input.title || "alt"}

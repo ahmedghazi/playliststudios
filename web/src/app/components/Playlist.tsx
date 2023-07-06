@@ -14,15 +14,6 @@ type Props = {
   input: Studio[];
 };
 
-// const myCustomImageBuilder = (imageUrlBuilder, options) => {
-// 	return imageUrlBuilder
-// 		.width(options.width || Math.min(options.originalImageDimensions.width, 800))
-// 		.blur(20)
-// 		.flipHorizontal()
-// 		.saturation(-100)
-// 		.fit('clip');
-// };
-
 const Playlist = ({ input }: Props) => {
   const [poster, setPoster] = useState<SanityImageAsset | any>(null);
 
@@ -61,6 +52,7 @@ const Playlist = ({ input }: Props) => {
       poster: input[currentStudioIndex].poster?.asset,
       trackUrl: input[currentStudioIndex].trackUrl,
       logo: input[currentStudioIndex].logo,
+      studioUrl: input[currentStudioIndex].studioUrl,
     });
   }, [currentStudioIndex]);
 
