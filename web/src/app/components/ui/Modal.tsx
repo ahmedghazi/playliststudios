@@ -12,7 +12,7 @@ const Container = styled.div<ContainerProps>`
   /* height: calc(100vh - (var(--header-height) + var(--space-md) * 2)); */
   transition: transform 0.2s var(--cubic);
   transform: ${(p) => (p.$isActive ? "translateY(0)" : "translateY(100%)")};
-  opacity: ${(p) => (p.$isActive ? "1" : "0")};
+  opacity: ${(p) => (p.$isActive ? "0.9" : "0")};
 `;
 
 type ModalProps = {
@@ -29,10 +29,7 @@ const Modal = ({ children, isActive }: ModalProps) => {
   return (
     <Container
       $isActive={isActive}
-      className={clsx(
-        "modal bg-bg  z-10 md:pl-lg"
-        // isActive ? "" : "hidden"
-      )}>
+      className={clsx("modal bg-bg  z-10 md:pl-lg")}>
       <div className='sticky top-0'>
         <div className='inner'>{children}</div>
       </div>
