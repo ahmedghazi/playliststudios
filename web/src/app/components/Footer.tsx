@@ -5,7 +5,7 @@ import { getSettings } from "../utils/sanity-queries";
 import { PortableText } from "@portabletext/react";
 import components from "../utils/portableTextComponents";
 
-type Props = {};
+// type Props = {};
 
 export default async function Footer(): Promise<JSX.Element> {
   const settings: Settings = await getSettings();
