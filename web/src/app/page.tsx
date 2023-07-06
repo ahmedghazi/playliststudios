@@ -5,7 +5,7 @@ import Playlist from "./components/Playlist";
 import { Studio } from "./types/schema";
 
 export const revalidate = 3600; // revalidate every hour
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
