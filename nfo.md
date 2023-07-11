@@ -13,5 +13,5 @@ https://vercel.com/new/hello-jimbobarbuc
 
 - version sans les posters ???
 - logos rouge > Jimbo
-  #- studio url bo + au click poster ouvrir le site du studio
-- publish > deploy vercel
+  # - studio url bo + au click poster ouvrir le site du studio
+- # publish > deploy vercel

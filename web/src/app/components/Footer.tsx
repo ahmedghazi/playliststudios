@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import components from "../utils/portableTextComponents";
 
 // type Props = {};
+// export const revalidate = 60;
 
 export default async function Footer(): Promise<JSX.Element> {
   const settings: Settings = await getSettings();
