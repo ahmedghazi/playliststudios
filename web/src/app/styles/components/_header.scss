@@ -14,13 +14,14 @@ header {
   }
 
   nav li.is-active {
-    color: black;
+    color: white;
+    text-decoration: underline;
   }
 
   nav li,
   button {
     &:hover {
-      color: black;
+      color: white;
     }
   }
   @media all and (max-width: $md) {
