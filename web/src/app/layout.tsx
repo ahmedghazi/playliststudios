@@ -6,6 +6,7 @@ import "./styles/index.scss";
 import { useEffect } from "react";
 import Cursor from "./components/ui/Cursor";
 // import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 const config = require("./config/website");
 
 export const metadata = {
@@ -54,6 +55,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
           </PageContextProvider>
+          <Analytics />
         </div>
 
         <Cursor color='var(--color-theme)' size={30} />
