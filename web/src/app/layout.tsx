@@ -7,13 +7,15 @@ import { useEffect } from "react";
 import Cursor from "./components/ui/Cursor";
 // import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-const config = require("./config/website");
+// const config = require("./config/website");
+import website from "./config/website";
 
 export const metadata = {
   title: {
-    template: `%s | ${config.title}`,
+    template: `%s | ${website.title}`,
   },
-  description: config.description,
+  description: website.description,
+  metadataBase: new URL(website.url),
 };
 
 export default function RootLayout({
@@ -24,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
+        {/* <link rel='canonical' href={website.url} /> */}
         <link
           rel='apple-touch-icon'
           sizes='180x180'
