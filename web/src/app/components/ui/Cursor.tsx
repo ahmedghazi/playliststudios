@@ -60,7 +60,7 @@ const Cursor = ({ color, size }: Props) => {
   const [isInput, setIsInput] = useState<boolean>(false);
 
   useEffect(() => {
-    document.body.classList.add("has-custom-cursor");
+    document.documentElement.classList.add("has-custom-cursor");
     // console.log(document.body);
     // return () => document.body.classList.remove('has-custom-cursor');
   }, []);

@@ -4,6 +4,12 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
+  &.has-custom-cursor {
+    &,
+    body {
+      cursor: none;
+    }
+  }
 }
 body {
   // overflow-y: auto;

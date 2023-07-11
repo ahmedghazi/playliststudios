@@ -60,11 +60,12 @@ const StudioUI = ({ index, input }: Props) => {
   return (
     <article
       className={clsx(
-        "studio-ui mb-md text-lg cursor-pointer relative",
+        "studio-ui mb-md text-lg cursor-pointer- relative",
         currentStudioIndex === index ? "is-active" : ""
       )}
+      role='button'
       onClick={_onClick}>
-      <div className='grid md:block grid-rows-2'>
+      <div className='grid md:block grid-rows-2 pointer-events-none '>
         <div className='infos flex b-t b-b bg-bg'>
           <div className='w-1/2 flex justify-between studio-infos '>
             <div className='flex flex-col justify-between p-txt'>
@@ -105,8 +106,8 @@ const StudioUI = ({ index, input }: Props) => {
               width: "100%",
               height: "auto",
             }}
-            blurDataURL={logo?.metadata?.lqip} //automatically provided
-            placeholder='blur' // Optional blur-up while loading
+            // blurDataURL={logo?.metadata?.lqip} //automatically provided
+            // placeholder='blur' // Optional blur-up while loading
           />
         </div>
       </div>

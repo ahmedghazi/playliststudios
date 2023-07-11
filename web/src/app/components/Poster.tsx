@@ -15,7 +15,7 @@ const Poster = () => {
       setPoster(studio.poster);
     }
   }, [studio]);
-  console.log(studio);
+  // console.log(studio);
   return (
     <Modal isActive={play}>
       {poster && poster?.url && (

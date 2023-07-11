@@ -28,7 +28,7 @@ const Modal = ({ children, isActive }: ModalProps) => {
   return (
     <Container
       $isActive={isActive}
-      className={clsx("modal bg-bg  z-10 md:pl-lg")}>
+      className={clsx("modal bg-bg-  z-10 md:pl-lg")}>
       <div className='sticky top-0'>
         <div className='inner'>{children}</div>
       </div>
