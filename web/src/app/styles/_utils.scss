@@ -110,6 +110,12 @@ ul.list-with-comma {
   }
 }
 
+@keyframes blink-animation {
+  to {
+    opacity: 1;
+  }
+}
+
 .gradient {
   background: rgb(235, 234, 229);
   background: linear-gradient(

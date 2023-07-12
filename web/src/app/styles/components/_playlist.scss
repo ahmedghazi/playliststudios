@@ -1,11 +1,64 @@
 .playlist {
   @media all and (max-width: $md) {
-    display: flex;
+    display: grid;
     width: 180vw;
 
+    .poster-container {
+      &.sm-only {
+        position: fixed;
+        width: calc(90vw - var(--space-sm));
+        right: var(--space-sm);
+        top: calc(var(--header-height) + var(--space-sm));
+      }
+      .modal {
+        visibility: visible;
+      }
+      // &.hidden-sm {
+      //   display: block;
+      //   visibility: hidden;
+      // }
+    }
     .feed,
     .modal {
-      width: 50%;
+      // width: 50%;
+      align-self: flex-start;
+      .sticky {
+        // border: 1px solid red;
+      }
+    }
+    .modal {
+      // background-color: orange;
+      // top: calc(var(--studio-top) + var(--header-height));
+      // top: calc(var(--studio-top));
+      // visibility: hidden;
+    }
+    .feed {
+      width: 90vw;
+      z-index: 20;
+      background-color: var(--color-bg);
+    }
+    // .modal {
+    //   position: fixed;
+    //   padding: var(--space-sm);
+    //   width: 100%;
+    // }
+  }
+
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: rgba($color: #e9e9e6, $alpha: 0.9);
+    display: grid;
+    align-items: center;
+    display: none;
+    z-index: 999;
+    &.is-active {
+      display: grid;
+    }
+    .inner {
+      opacity: 0;
+      animation: blink-animation 0.5s infinite alternate linear;
+      text-align: center;
     }
   }
 }

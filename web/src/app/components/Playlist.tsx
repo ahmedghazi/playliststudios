@@ -7,8 +7,10 @@ import { subscribe, unsubscribe } from "pubsub-js";
 import Image from "next/image";
 import AudioPlayer from "./ui/AudioPlayer";
 import { usePageContext } from "../context/PageContext";
-import { urlFor } from "../utils/sanity-utils";
+// import { urlFor } from "../utils/sanity-utils";
 import Poster from "./Poster";
+import clsx from "clsx";
+// import initReactFastclick from "react-fastclick";
 
 type Props = {
   input: Studio[];
@@ -16,9 +18,14 @@ type Props = {
 
 const Playlist = ({ input }: Props) => {
   const [poster, setPoster] = useState<SanityImageAsset | any>(null);
+  const [buffer, setBuffer] = useState<boolean>(false);
 
   const { studio, setStudio, currentStudioIndex, setCurrentStudioIndex } =
     usePageContext();
+
+  // useEffect(() => {
+  //   initReactFastclick();
+  // }, []);
 
   useEffect(() => {
     // document.addEventListener("click", () => {
@@ -26,13 +33,27 @@ const Playlist = ({ input }: Props) => {
     // });
 
     const tokenEnded = subscribe("AUDIO_END", (e, d) => {
-      console.log(e);
+      // console.log(e)
       const next = studio.index + 1 < input.length ? studio.index + 1 : 0;
       console.log(e, next);
       setCurrentStudioIndex(next);
     });
+
+    const tokenBuffer = subscribe("BUFFER", (e, d) => {
+      setBuffer(true);
+    });
+    const tokenBufferEnd = subscribe("BUFFER_END", (e, d) => {
+      setBuffer(false);
+    });
+    const tokenProgress = subscribe("AUDIO_PROGRESS", (e, d) => {
+      setBuffer(false);
+    });
+
     return () => {
       unsubscribe(tokenEnded);
+      unsubscribe(tokenBuffer);
+      unsubscribe(tokenBufferEnd);
+      unsubscribe(tokenProgress);
     };
   }, [studio, setCurrentStudioIndex]);
 
@@ -63,8 +84,17 @@ const Playlist = ({ input }: Props) => {
           <StudioUI key={item.title} index={i} input={item} />
         ))}
       </div>
-      <Poster />
+      <div className='poster-container hidden-sm'>
+        <Poster />
+      </div>
+      <div className='poster-container sm-only'>
+        <Poster />
+      </div>
+
       {studio && studio.trackUrl && <AudioPlayer url={studio.trackUrl} />}
+      <div className={clsx("loader", buffer ? "is-active" : "")}>
+        <div className='inner'>Buffering ...</div>
+      </div>
     </div>
   );
 };

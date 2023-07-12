@@ -5,8 +5,8 @@ const website = {
   description:
     "Welcome to Playlist Studios. Studios around the world. Free Listening Get your A2 Risography copy 50 ltd now !",
   headline: "", // Headline for schema.org JSONLD
-  url: "https://playliststudios.com", // Domain of your site. No trailing slash!
-  image: "https://playliststudios.com/playlist-studios-poster.jpeg", // Used for SEO
+  url: "https://www.playliststudios.com", // Domain of your site. No trailing slash!
+  image: "https://www.playliststudios.com/playlist-studios-poster.jpeg", // Used for SEO
   ogLanguage: "fr_FR", // Facebook Language
 
   // JSONLD / Manifest

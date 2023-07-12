@@ -63,6 +63,16 @@ const AudioPlayer = ({ url }: Props) => {
       },
     },
   };
+
+  const _onBuffer = () => {
+    // console.log("_onBuffer");
+    publish("BUFFER");
+  };
+  const _onBufferEnd = () => {
+    // console.log("_onBufferEnd");
+    publish("BUFFER_END");
+  };
+
   return (
     <div className='player-audio fixed hidden'>
       <ReactPlayer
@@ -77,6 +87,8 @@ const AudioPlayer = ({ url }: Props) => {
         onReady={_onReady}
         onEnded={_onEnded}
         onProgress={_onProgress}
+        onBuffer={_onBuffer}
+        onBufferEnd={_onBufferEnd}
       />
     </div>
   );

@@ -11,11 +11,14 @@ import { Analytics } from "@vercel/analytics/react";
 import website from "./config/website";
 
 export const metadata = {
+  metadataBase: new URL(website.url),
   title: {
     template: `%s | ${website.title}`,
   },
   description: website.description,
-  metadataBase: new URL(website.url),
+  openGraph: {
+    images: website.image,
+  },
 };
 
 export default function RootLayout({
@@ -27,23 +30,6 @@ export default function RootLayout({
     <html lang='en'>
       <head>
         <link rel='canonical' href={website.url} />
-        <link
-          rel='apple-touch-icon'
-          sizes='180x180'
-          href='https://www.playliststudios.com/apple-touch-icon.png'
-        />
-        <link
-          rel='icon'
-          type='image/png'
-          sizes='32x32'
-          href='https://www.playliststudios.com/favicon-32x32.png'
-        />
-        <link
-          rel='icon'
-          type='image/png'
-          sizes='16x16'
-          href='https://www.playliststudios.com/favicon-16x16.png'
-        />
         <link
           rel='manifest'
           href='https://www.playliststudios.com/site.webmanifest'

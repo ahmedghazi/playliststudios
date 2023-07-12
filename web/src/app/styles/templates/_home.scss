@@ -1,7 +1,11 @@
 .page-home {
-  overflow: hidden;
-  overflow-x: auto;
+  // overflow: hidden;
+  // overflow-x: clip;
 }
 
-// @media all and (max-width: $sm) {
-// }
+@media all and (max-width: $md) {
+  .page-home {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+}

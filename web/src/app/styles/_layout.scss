@@ -4,6 +4,8 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   &.has-custom-cursor {
     &,
     body {
@@ -12,7 +14,6 @@ html {
   }
 }
 body {
-  // overflow-y: auto;
   background-color: var(--color-bg);
   color: var(--color-primary);
   transition: background-color 0.4s var(--cubic), color 0.4s var(--cubic);

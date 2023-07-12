@@ -8,7 +8,7 @@
   &.is-active {
     .icon-play {
       // opacity: 1;
-      animation: blink-animation 1s infinite;
+      animation: blink-animation 0.5s infinite alternate linear;
     }
     .infos {
       background-color: var(--color-theme);
@@ -70,10 +70,4 @@
 
 .p-txt {
   padding: 0.2em 0.4em;
-}
-
-@keyframes blink-animation {
-  to {
-    opacity: 1;
-  }
 }

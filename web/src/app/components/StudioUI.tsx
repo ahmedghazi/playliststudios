@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SanityImageAsset, Studio } from "../types/schema";
 import Image from "next/image";
 import { publish, subscribe, unsubscribe } from "pubsub-js";
@@ -18,7 +18,7 @@ const StudioUI = ({ index, input }: Props) => {
   // console.log(progress);
   const logo: SanityImageAsset | any = input.logo?.asset;
   // const poster: SanityImageAsset | any = input.poster?.asset;
-
+  const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState<number>(0);
   const [active, setActive] = useState<boolean>(false);
   const { currentStudioIndex, setCurrentStudioIndex, play, setPlay } =
@@ -45,6 +45,18 @@ const StudioUI = ({ index, input }: Props) => {
     setActive(currentStudioIndex === index);
   }, [currentStudioIndex]);
 
+  useEffect(() => {
+    if (active && ref.current) {
+      const bounding = ref.current.getBoundingClientRect();
+      console.log(ref.current.offsetTop);
+      console.log(bounding);
+      document.documentElement.style.setProperty(
+        "--studio-top",
+        ref.current.offsetTop + "px"
+      );
+    }
+  }, [active]);
+
   const _onClick = (e: React.MouseEvent) => {
     // setActive(!active);
     if (index !== currentStudioIndex) {
@@ -64,7 +76,9 @@ const StudioUI = ({ index, input }: Props) => {
         currentStudioIndex === index ? "is-active" : ""
       )}
       role='button'
-      onClick={_onClick}>
+      onClick={_onClick}
+      // onTouchStart={() => _onClick}
+      ref={ref}>
       <div className='grid md:block grid-rows-2 pointer-events-none '>
         <div className='infos flex b-t b-b bg-bg'>
           <div className='w-1/2 flex justify-between studio-infos '>

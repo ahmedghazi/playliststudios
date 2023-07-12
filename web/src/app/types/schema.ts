@@ -303,3 +303,12 @@ export type LinkInternal = {
 };
 
 export type Documents = Season | Studio | Settings;
+
+// export type fastclick {
+//   // function fastclick(layer: any, options?: FastClickOptions): FastClickObject;
+//   // namespace fastclick {
+//   //     var FastClick: FastClickStatic;
+//   // }
+//   // var fastclick: FastClickStatic;
+//   // export = fastclick;
+// }
