@@ -14,9 +14,10 @@ import clsx from "clsx";
 
 type Props = {
   input: Studio[];
+  themeColor: string;
 };
 
-const Playlist = ({ input }: Props) => {
+const Playlist = ({ input, themeColor }: Props) => {
   const [poster, setPoster] = useState<SanityImageAsset | any>(null);
   const [buffer, setBuffer] = useState<boolean>(false);
 
@@ -31,6 +32,8 @@ const Playlist = ({ input }: Props) => {
     // document.addEventListener("click", () => {
     //   setCurrentStudioIndex(Math.round(Math.random() * (input.length - 1)));
     // });
+    document.documentElement.style.setProperty("--color-theme", themeColor);
+    document.documentElement.style.setProperty("--color-primary", themeColor);
 
     const tokenEnded = subscribe("AUDIO_END", (e, d) => {
       // console.log(e)

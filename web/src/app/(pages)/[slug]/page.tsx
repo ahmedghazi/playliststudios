@@ -32,7 +32,7 @@ const Page: ({ params }: Props) => Promise<JSX.Element> = async ({
 
   return (
     <div className='page-home p-sm md:p-md'>
-      {playlist && <Playlist input={playlist} />}
+      {playlist && <Playlist input={playlist} themeColor={data.themeColor} />}
     </div>
   );
 };
