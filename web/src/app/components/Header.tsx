@@ -32,7 +32,7 @@ export default async function Header(): Promise<JSX.Element> {
                     style={{
                       opacity: 1 - i / 4,
                     }}>
-                    #{item.title}
+                    <Link href={item.slug.current}>#{item.title}</Link>
                   </li>
                 ))}
                 <li

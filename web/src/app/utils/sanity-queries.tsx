@@ -16,6 +16,13 @@ export async function getHomeSeason(): Promise<Season> {
   return client.fetch(
     groq`*[_type == "season" && homePage == true][0]{
       ...,
+      seo{
+        ...,
+        metaImage{
+          ...,
+          asset->
+        }
+      },
       playlist[]->{
         ...,
         logo {
@@ -34,8 +41,15 @@ export async function getHomeSeason(): Promise<Season> {
 
 export async function getSeason(slug: string): Promise<Season> {
   return client.fetch(
-    groq`*[_type == "season" && slug == $slug][0]{
+    groq`*[_type == "season" && slug.current == $slug][0]{
       ...,
+      seo{
+        ...,
+        metaImage{
+          ...,
+          asset->
+        }
+      },
       playlist[]->{
         ...,
         logo {
