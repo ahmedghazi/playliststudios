@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const data = await getHomeSeason();
   const playlist: Studio[] | any = data.playlist;
-  const themeColor: string | any = data.themeColor;
+  const themeColor: string | any = data.themeColor || "blue";
 
   return (
     <div className='page-home p-sm md:p-md'>

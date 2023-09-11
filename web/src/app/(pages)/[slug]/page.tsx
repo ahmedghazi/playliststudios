@@ -29,10 +29,11 @@ const Page: ({ params }: Props) => Promise<JSX.Element> = async ({
 }) => {
   const data = await getSeason(params.slug);
   const playlist: Studio[] | any = data.playlist;
+  const themeColor: string | any = data.themeColor || "blue";
 
   return (
     <div className='page-home p-sm md:p-md'>
-      {playlist && <Playlist input={playlist} themeColor={data.themeColor} />}
+      {playlist && <Playlist input={playlist} themeColor={themeColor} />}
     </div>
   );
 };
