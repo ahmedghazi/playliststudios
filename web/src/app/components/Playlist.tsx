@@ -11,6 +11,7 @@ import { usePageContext } from "../context/PageContext";
 import Poster from "./Poster";
 import clsx from "clsx";
 // import initReactFastclick from "react-fastclick";
+import FaviconLetter from "./ui/FaviconLetter";
 
 type Props = {
   input: Studio[];
@@ -32,6 +33,7 @@ const Playlist = ({ input, themeColor }: Props) => {
     // document.addEventListener("click", () => {
     //   setCurrentStudioIndex(Math.round(Math.random() * (input.length - 1)));
     // });
+    console.log(themeColor);
     document.documentElement.style.setProperty("--color-theme", themeColor);
     document.documentElement.style.setProperty("--color-primary", themeColor);
 
@@ -98,6 +100,7 @@ const Playlist = ({ input, themeColor }: Props) => {
       <div className={clsx("loader", buffer ? "is-active" : "")}>
         <div className='inner'>Buffering ...</div>
       </div>
+      <FaviconLetter texte={"P"} background={themeColor} foreground={"white"} />
     </div>
   );
 };

@@ -22,10 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const data = await getHomeSeason();
   const playlist: Studio[] | any = data.playlist;
+  const themeColor: string | any = data.themeColor;
 
   return (
     <div className='page-home p-sm md:p-md'>
-      {playlist && <Playlist input={playlist} />}
+      {playlist && <Playlist input={playlist} themeColor={themeColor} />}
     </div>
   );
 }
